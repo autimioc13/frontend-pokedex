@@ -1,0 +1,68 @@
+:root {
+  /* ── Spacing scale ─────────────────────────────────── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* ── Border radius ─────────────────────────────────── */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* ── Accent ────────────────────────────────────────── */
+  --accent: #8b5cf6;
+  --color-accent: #8b5cf6;
+  --color-accent-hover: #a78bfa;
+
+  /* ── Transitions ───────────────────────────────────── */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+
+  /* ── Pokémon type colors — background variant ──────── */
+  --type-fire-bg: rgba(249, 115, 22, 0.15);
+  --type-water-bg: rgba(59, 130, 246, 0.15);
+  --type-grass-bg: rgba(34, 197, 94, 0.15);
+  --type-electric-bg: rgba(234, 179, 8, 0.15);
+  --type-psychic-bg: rgba(236, 72, 153, 0.15);
+  --type-ice-bg: rgba(103, 232, 249, 0.15);
+  --type-dragon-bg: rgba(99, 102, 241, 0.15);
+  --type-dark-bg: rgba(68, 64, 60, 0.15);
+  --type-fairy-bg: rgba(244, 114, 182, 0.15);
+  --type-fighting-bg: rgba(220, 38, 38, 0.15);
+  --type-poison-bg: rgba(168, 85, 247, 0.15);
+  --type-ground-bg: rgba(217, 119, 6, 0.15);
+  --type-flying-bg: rgba(125, 211, 252, 0.15);
+  --type-bug-bg: rgba(132, 204, 22, 0.15);
+  --type-rock-bg: rgba(168, 162, 158, 0.15);
+  --type-ghost-bg: rgba(139, 92, 246, 0.15);
+  --type-steel-bg: rgba(148, 163, 184, 0.15);
+  --type-normal-bg: rgba(161, 161, 170, 0.15);
+
+  /* ── Pokémon type colors — text variant ────────────── */
+  --type-fire-text: rgb(234, 88, 12);
+  --type-water-text: rgb(37, 99, 235);
+  --type-grass-text: rgb(22, 163, 74);
+  --type-electric-text: rgb(202, 138, 4);
+  --type-psychic-text: rgb(219, 39, 119);
+  --type-ice-text: rgb(8, 145, 178);
+  --type-dragon-text: rgb(79, 70, 229);
+  --type-dark-text: rgb(41, 37, 36);
+  --type-fairy-text: rgb(236, 72, 153);
+  --type-fighting-text: rgb(185, 28, 28);
+  --type-poison-text: rgb(147, 51, 234);
+  --type-ground-text: rgb(180, 83, 9);
+  --type-flying-text: rgb(14, 165, 233);
+  --type-bug-text: rgb(101, 163, 13);
+  --type-rock-text: rgb(120, 113, 108);
+  --type-ghost-text: rgb(109, 40, 217);
+  --type-steel-text: rgb(100, 116, 139);
+  --type-normal-text: rgb(113, 113, 122);
+}
