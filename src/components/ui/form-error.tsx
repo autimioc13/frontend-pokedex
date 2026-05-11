@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { AlertCircle, CheckCircle } from 'lucide-react'
+import { AlertCircle, CheckCircle } from '@/lib/utils/icons'
 
 import { cn } from '@/lib/utils/cn'
 

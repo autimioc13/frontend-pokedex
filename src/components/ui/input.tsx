@@ -1,14 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import { CheckCircle2, Eye, EyeOff } from 'lucide-react'
+import { CheckCircle2, Eye, EyeOff } from '@/lib/utils/icons'
 
 import { cn } from '@/lib/utils/cn'
 
 // ============================================================
-// INPUT — Componente base del design system
-// Soporta: label, error, helperText, password toggle,
-//          isValid (ícono ✓), showError (control de visibilidad)
+// Input — campo con floating label
+// Compatible con todas las props del Input anterior (PDX-54)
+// Floating label: sube al hacer focus o cuando hay valor
 // ============================================================
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -35,28 +35,19 @@ export function Input({
   const inputType = isPassword ? (showPassword ? 'text' : 'password') : type
   const inputId = id ?? label?.toLowerCase().replace(/\s+/g, '-')
 
-  // Mostrar ícono ✓ solo en campos no-password cuando son válidos y sin error
   const showValidIcon = !isPassword && isValid === true && !error
-  // showError: undefined → siempre mostrar (comportamiento original)
   const shouldShowError = showError !== false && !!error
+  const hasLabel = !!label
 
   return (
     <div className="flex flex-col gap-1.5">
-      {/* Label */}
-      {label && (
-        <label
-          htmlFor={inputId}
-          className="font-sans text-sm font-medium text-zinc-700 dark:text-zinc-300"
-        >
-          {label}
-        </label>
-      )}
-
-      {/* Input wrapper */}
+      {/* Input wrapper con floating label */}
       <div className="relative">
         <input
           id={inputId}
           type={inputType}
+          // Placeholder vacío es necesario para el selector :placeholder-shown
+          placeholder=" "
           aria-invalid={shouldShowError}
           aria-describedby={
             shouldShowError
@@ -66,17 +57,42 @@ export function Input({
                 : undefined
           }
           className={cn(
-            `w-full rounded-lg border bg-white px-3 py-2.5 font-sans text-sm text-zinc-900 transition-colors duration-150 outline-none placeholder:text-zinc-400 dark:bg-zinc-900 dark:text-zinc-100 dark:placeholder:text-zinc-600`,
-            !error &&
-              `border-zinc-200 hover:border-zinc-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 dark:border-zinc-700 dark:hover:border-zinc-600 dark:focus:border-violet-500`,
-            error &&
-              `border-red-400 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 dark:border-red-500`,
-            // Reservar espacio para íconos de la derecha
+            'peer w-full rounded-lg border bg-white font-sans text-sm text-zinc-900 transition-all duration-200 outline-none',
+            'dark:bg-zinc-900 dark:text-zinc-100',
+            // Padding según si hay label flotante o no
+            hasLabel ? 'px-3 pt-5 pb-2' : 'px-3 py-2.5',
+            // Espacio para íconos a la derecha
             (isPassword || showValidIcon) && 'pr-10',
+            // Estado normal
+            !error &&
+              'border-zinc-200 hover:border-zinc-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 dark:border-zinc-700 dark:hover:border-zinc-600 dark:focus:border-violet-500',
+            // Estado error
+            error &&
+              'border-red-400 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 dark:border-red-500',
             className,
           )}
           {...props}
         />
+
+        {/* Label flotante */}
+        {hasLabel && (
+          <label
+            htmlFor={inputId}
+            className={cn(
+              // Base: posicionado dentro del campo
+              'pointer-events-none absolute left-3 font-sans transition-all duration-200 select-none',
+              'top-3.5 text-sm text-zinc-500 dark:text-zinc-400',
+              // Sube al hacer focus
+              'peer-focus:top-1.5 peer-focus:text-xs',
+              error ? 'peer-focus:text-red-500' : 'peer-focus:text-violet-500',
+              // Sube cuando el campo tiene valor (placeholder no visible)
+              'peer-[:not(:placeholder-shown)]:top-1.5',
+              'peer-[:not(:placeholder-shown)]:text-xs',
+            )}
+          >
+            {label}
+          </label>
+        )}
 
         {/* Botón toggle password */}
         {isPassword && (

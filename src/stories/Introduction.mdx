@@ -1,0 +1,41 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta title="Pokédex OS / Design System" />
+
+# Pokédex OS — Design System
+
+Sistema de componentes UI del proyecto Pokédex OS.
+Diseño minimalista premium inspirado en Linear.app.
+
+## Stack
+
+- **Tailwind CSS** — utility-first
+- **class-variance-authority** — variantes de componentes
+- **Framer Motion** — animaciones
+- **Lucide React** — íconos (strokeWidth 1.5)
+- **next-themes** — dark mode
+
+## Convenciones
+
+- 2 espacios de indentación
+- Comillas simples · Sin punto y coma
+- Imports de íconos desde `@/lib/utils/icons`
+- Imports de componentes desde `@/components/ui`
+
+## Componentes disponibles
+
+| Componente | Descripción                             |
+| ---------- | --------------------------------------- |
+| Button     | 5 variantes × 3 tamaños                 |
+| Input      | Floating label · Toggle password        |
+| Card       | 4 variantes · Header/Body/Footer        |
+| TypeBadge  | 18 tipos Pokémon con colores semánticos |
+| Skeleton   | Pulse animation · Card · Text · Detail  |
+| Icon       | 60+ íconos · 6 tamaños · Accesible      |
+| FormError  | Error y success inline                  |
+| Toast      | Notificaciones globales                 |
+
+## Paleta de tipos Pokémon
+
+Los colores de tipos están definidos como variables CSS en
+`src/styles/tokens.css` y se usan via `TypeBadge`.

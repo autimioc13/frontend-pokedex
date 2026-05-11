@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { AlertCircle, CheckCircle, Info, X } from 'lucide-react'
+import { AlertCircle, CheckCircle, Info, X } from '@/lib/utils/icons'
 
 import {
   type Toast,

@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { motion, type Variants } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Zap } from 'lucide-react'
+import { Zap } from '@/lib/utils/icons'
 import { z } from 'zod'
 
 import { getAuthErrorMessage } from '@/lib/auth/errors'

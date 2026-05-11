@@ -1,7 +1,7 @@
 'use client'
 
 import { cva, type VariantProps } from 'class-variance-authority'
-import { Loader2 } from 'lucide-react'
+import { Loader2 } from '@/lib/utils/icons'
 
 import { cn } from '@/lib/utils/cn'
 

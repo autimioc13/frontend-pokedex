@@ -44,15 +44,18 @@ generaciones, armá tu equipo y batallá en tiempo real.
 
 ## Scripts disponibles
 
-| Comando                | Descripción                   |
-| ---------------------- | ----------------------------- |
-| `npm run dev`          | Servidor de desarrollo        |
-| `npm run build`        | Build de producción           |
-| `npm run start`        | Servidor de producción        |
-| `npm run lint`         | Verificar ESLint              |
-| `npm run format`       | Formatear con Prettier        |
-| `npm run format:check` | Verificar formato sin cambios |
-| `npx tsc --noEmit`     | Verificar TypeScript          |
+| Comando                   | Descripción                           |
+| ------------------------- | ------------------------------------- |
+| `npm run dev`             | Servidor de desarrollo                |
+| `npm run build`           | Build de producción                   |
+| `npm run start`           | Servidor de producción                |
+| `npm run lint`            | Verificar ESLint                      |
+| `npm run format`          | Formatear con Prettier                |
+| `npm run format:check`    | Verificar formato sin cambios         |
+| `npx tsc --noEmit`        | Verificar TypeScript                  |
+| `npm run test:a11y`       | 53 tests de accesibilidad WCAG 2.1 AA |
+| `npm run storybook`       | Design system en localhost:6006       |
+| `npm run build-storybook` | Build estático del Storybook          |
 
 ## Estructura del proyecto
 
