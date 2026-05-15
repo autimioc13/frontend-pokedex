@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { TypeBadge } from '@/components/ui/type-badge'
 import { cn } from '@/lib/utils/cn'
@@ -8,7 +9,6 @@ import type { PokemonExplorerItem } from '@/lib/apollo/types'
 
 interface PokemonCardProps {
   pokemon: PokemonExplorerItem
-  onClick?: () => void
   className?: string
 }
 
@@ -16,11 +16,7 @@ function getArtworkUrl(id: number): string {
   return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
 }
 
-function formatNumber(id: number): string {
-  return `#${String(id).padStart(4, '0')}`
-}
-
-export function PokemonCard({ pokemon, onClick, className }: PokemonCardProps) {
+export function PokemonCard({ pokemon, className }: PokemonCardProps) {
   const types = pokemon.pokemon_v2_pokemontypes
     .slice()
     .sort((a, b) => a.slot - b.slot)
@@ -29,11 +25,11 @@ export function PokemonCard({ pokemon, onClick, className }: PokemonCardProps) {
   const isLegendary = pokemon.pokemon_v2_pokemonspecy?.is_legendary ?? false
   const isMythical = pokemon.pokemon_v2_pokemonspecy?.is_mythical ?? false
   const isSpecial = isLegendary || isMythical
-
   const primaryType = types[0] ?? 'normal'
 
   return (
-    <article
+    <Link
+      href={`/pokemon/${pokemon.id}`}
       className={cn(
         'group relative flex flex-col rounded-xl border transition-all duration-200',
         'cursor-pointer border-zinc-200 bg-white select-none',
@@ -42,19 +38,10 @@ export function PokemonCard({ pokemon, onClick, className }: PokemonCardProps) {
         'dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700',
         className,
       )}
-      onClick={onClick}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault()
-          onClick?.()
-        }
-      }}
-      aria-label={`${pokemon.name}, tipo ${primaryType}`}
+      aria-label={`Ver detalle de ${pokemon.name}, tipo ${primaryType}`}
     >
       <span className="absolute top-2 left-3 font-mono text-xs text-zinc-400 tabular-nums dark:text-zinc-500">
-        {formatNumber(pokemon.id)}
+        #{String(pokemon.id).padStart(4, '0')}
       </span>
 
       {isSpecial && (
@@ -83,6 +70,6 @@ export function PokemonCard({ pokemon, onClick, className }: PokemonCardProps) {
           <TypeBadge key={type} type={type} size="sm" />
         ))}
       </div>
-    </article>
+    </Link>
   )
 }
